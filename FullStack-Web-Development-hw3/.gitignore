@@ -1,0 +1,36 @@
+# Python bytecode / кеш
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Віртуальне середовище
+venv/
+.env/
+env/
+ENV/
+
+# IDE / редактори
+.vscode/
+.idea/
+*.swp
+
+# Логи / тимчасові файли
+*.log
+*.tmp
+*.bak
+
+# Секретні файли (якщо є)
+*.env
+
+# Файл з повідомленнями, які створюються динамічно
+storage/data.json
+
+# Docker специфіка
+*.tar
+*.img
+docker-compose.override.yml
+
+# Системні файли
+.DS_Store
+Thumbs.db
