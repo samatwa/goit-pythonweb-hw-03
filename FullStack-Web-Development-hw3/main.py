@@ -2,9 +2,9 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 import urllib.parse
 import mimetypes
 import pathlib
-from jinja2 import Environment, FileSystemLoader, Template
 import json
 from datetime import datetime
+from jinja2 import Environment, FileSystemLoader
 
 
 # Абсолютний шлях до папки, де знаходиться main.py
