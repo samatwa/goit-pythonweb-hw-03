@@ -18,7 +18,7 @@ STORAGE_DIR.mkdir(exist_ok=True)
 DATA_FILE = STORAGE_DIR / "data.json"
 
 # Налаштування Jinja2
-env = Environment(loader=FileSystemLoader(BASE_DIR))
+env = Environment(loader=FileSystemLoader(BASE_DIR / "templates"))
 
 
 class HttpHandler(BaseHTTPRequestHandler):
@@ -66,10 +66,17 @@ class HttpHandler(BaseHTTPRequestHandler):
             self.send_html_file("error.html", 404)
 
     def send_html_file(self, filename, status=200):
+        file_path = BASE_DIR / "templates" / filename
+        if not file_path.exists():
+            self.send_response(404)
+            self.end_headers()
+            return
+    
         self.send_response(status)
         self.send_header("Content-type", "text/html")
         self.end_headers()
-        with open(filename, "rb") as fd:
+
+        with open(file_path, "rb") as fd:
             self.wfile.write(fd.read())
 
     def send_static(self):
